@@ -7,7 +7,7 @@ with open(desc_file, "r") as fh:
 
 setuptools.setup(
     name="casbin_sqlobject_adapter",
-    version="0.1.0",
+    version="0.1.1",
     author="TechLee",
     author_email="techlee@qq.com",
     description="SQLObject Adapter for PyCasbin",
