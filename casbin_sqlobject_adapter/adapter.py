@@ -1,13 +1,12 @@
 from casbin import persist
-from sqlobject import *
+from sqlobject import SQLObject, StringCol, sqlhub, connectionForURI
 
 
 class CasbinRule(SQLObject):
-
     class sqlmeta:
 
-        table = 'casbin_rule' 
-        
+        table = "casbin_rule"
+
     ptype = StringCol(length=255)
     v0 = StringCol(length=255, default=None)
     v1 = StringCol(length=255, default=None)
@@ -22,13 +21,10 @@ class CasbinRule(SQLObject):
             if v is None:
                 break
             arr.append(v)
-        return ', '.join(arr)
-    
+        return ", ".join(arr)
+
     def __repr__(self):
         return '<CasbinRule {}: "{}">'.format(self.id, str(self))
-    
-    
-
 
 
 class Adapter(persist.Adapter):
@@ -37,20 +33,18 @@ class Adapter(persist.Adapter):
     def __init__(self, connection_string):
         self._conhandler = connectionForURI(connection_string)
         sqlhub.processConnection = self._conhandler
-        
 
     def load_policy(self, model):
         """loads all policy rules from the storage."""
         count = CasbinRule.select().count()
-        for i in range(1,1+count):
+        for i in range(1, 1 + count):
             line = CasbinRule.get(i)
             persist.load_policy_line(str(line), model)
 
     def _save_policy_line(self, ptype, rule):
         line = CasbinRule.selectBy(ptype=ptype)
         for i, v in enumerate(rule):
-            setattr(line, 'v{}'.format(i), v)
-
+            setattr(line, "v{}".format(i), v)
 
     def save_policy(self, model):
         """saves all policy rules to the storage."""
@@ -60,13 +54,12 @@ class Adapter(persist.Adapter):
             for ptype, ast in model.model[sec].items():
                 for rule in ast.policy:
                     self._save_policy_line(ptype, rule)
-                      
+
         return True
 
     def add_policy(self, sec, ptype, rule):
         """adds a policy rule to the storage."""
         self._save_policy_line(ptype, rule)
-        
 
     def remove_policy(self, sec, ptype, rule):
         """removes a policy rule from the storage."""
@@ -77,6 +70,3 @@ class Adapter(persist.Adapter):
         This is part of the Auto-Save feature.
         """
         pass
-
-
-
