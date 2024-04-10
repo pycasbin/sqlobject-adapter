@@ -1,0 +1,38 @@
+[project]
+name = "casbin_sqlobject_adapter"
+version = "0.1.1"
+authors = [
+    {name = "TechLee", email = "techlee@qq.com"},
+]
+description = "SQLObject Adapter for PyCasbin"
+keywords=["casbin", "SQLObject", "casbin-adapter", "rbac", "access control", "abac", "acl", "permission"]
+readme = "README.md"
+dynamic = ["dependencies"]
+requires-python = ">=3.4"
+license = {text = "Apache 2.0"}
+classifiers = [
+    "Programming Language :: Python :: 3.4",
+    "Programming Language :: Python :: 3.5",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Home-page" = "https://github.com/pycasbin/sqlobject-adapter"
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+exclude = ["tests", "tests.*"]
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
