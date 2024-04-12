@@ -1,7 +1,7 @@
 SQLObject Adapter for PyCasbin
 ====
 
-[![GitHub Action](https://github.com/pycasbin/sqlobject-adapter/workflows/build/badge.svg?branch=master)](https://github.com/pycasbin/sqlobject-adapter/actions)
+[![GitHub Action](https://github.com/pycasbin/sqlobject-adapter/workflows/build/badge.svg)](https://github.com/pycasbin/sqlobject-adapter/actions)
 [![Coverage Status](https://coveralls.io/repos/github/pycasbin/sqlobject-adapter/badge.svg)](https://coveralls.io/github/pycasbin/sqlobject-adapter)
 [![Version](https://img.shields.io/pypi/v/casbin_sqlobject_adapter.svg)](https://pypi.org/project/casbin_sqlobject_adapter/)
 [![PyPI - Wheel](https://img.shields.io/pypi/wheel/casbin_sqlobject_adapter.svg)](https://pypi.org/project/casbin_sqlobject_adapter/)
